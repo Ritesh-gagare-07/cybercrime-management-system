@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Officer Login | CyberSecure</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin:0;
+            font-family:'Poppins', sans-serif;
+            height:100vh;
+            background: linear-gradient(120deg,#6A11CB,#2575FC);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width:90%;
+            max-width:1000px;
+            height:550px;
+            background:white;
+            border-radius:25px;
+            display:flex;
+            overflow:hidden;
+            box-shadow:0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        /* LEFT ANIMATION PANEL */
+        .left {
+            width:50%;
+            background: linear-gradient(135deg,#6A11CB,#2575FC);
+            color:white;
+            padding:50px;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .left h1 {
+            font-size:34px;
+            margin-bottom:10px;
+        }
+
+        .left p {
+            opacity:0.9;
+            line-height:1.6;
+        }
+
+        /* CYBER ANIMATION */
+        .shield {
+            width:160px;
+            height:160px;
+            border-radius:50%;
+            border:6px solid rgba(255,255,255,0.3);
+            position:absolute;
+            bottom:60px;
+            left:50%;
+            transform:translateX(-50%);
+            animation:pulse 2.5s infinite;
+        }
+
+        .shield::before {
+            content:"🔐";
+            font-size:70px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow:0 0 0 0 rgba(255,255,255,0.6); }
+            70% { box-shadow:0 0 0 40px rgba(255,255,255,0); }
+            100% { box-shadow:0 0 0 0 rgba(255,255,255,0); }
+        }
+
+        /* FLOATING LINES */
+        .line {
+            position:absolute;
+            width:2px;
+            height:100%;
+            background:rgba(255,255,255,0.2);
+            animation:move 4s linear infinite;
+        }
+
+        .line:nth-child(1) { left:20%; animation-delay:0s; }
+        .line:nth-child(2) { left:50%; animation-delay:1s; }
+        .line:nth-child(3) { left:80%; animation-delay:2s; }
+
+        @keyframes move {
+            from { top:-100%; }
+            to { top:100%; }
+        }
+
+        /* RIGHT LOGIN PANEL */
+        .right {
+            width:50%;
+            padding:60px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        .right h2 {
+            text-align:center;
+            color:#2575FC;
+            margin-bottom:25px;
+        }
+
+        input {
+            width:100%;
+            padding:14px;
+            margin-bottom:15px;
+            border-radius:12px;
+            border:1px solid #CBD5E1;
+            font-size:15px;
+        }
+
+        input:focus {
+            outline:none;
+            border-color:#2575FC;
+            box-shadow:0 0 0 3px rgba(37,117,252,0.2);
+        }
+
+        button {
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:30px;
+            background: linear-gradient(90deg,#6A11CB,#2575FC);
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover {
+            transform:translateY(-2px);
+            box-shadow:0 10px 25px rgba(37,117,252,0.4);
+        }
+
+        .links {
+            text-align:center;
+            margin-top:20px;
+            font-size:14px;
+        }
+
+        .links a {
+            text-decoration:none;
+            color:#2575FC;
+            font-weight:600;
+        }
+
+        /* TRUST BADGE */
+        .badge {
+            margin-top:20px;
+            text-align:center;
+            font-size:13px;
+            color:#555;
+        }
+
+        .badge span {
+            color:#2575FC;
+            font-weight:600;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:800px){
+            .container { flex-direction:column; height:auto; }
+            .left, .right { width:100%; }
+            .shield { position:relative; bottom:auto; margin-top:30px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+
+        <h1>Secure Officer Access</h1>
+        <p>
+            Authorized cyber crime officers only.<br>
+            All activities are logged, encrypted & monitored.
+        </p>
+
+        <div class="shield"></div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <h2>Officer Login</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div style="color:red;text-align:center;margin-bottom:10px;">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Official Email ID" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Secure Login</button>
+        </form>
+
+        <div class="links">
+            New officer? <a href="/officer/register">Register here</a>
+        </div>
+
+        <div class="badge">
+            🔒 Protected by <span>CyberSecure Authority System</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

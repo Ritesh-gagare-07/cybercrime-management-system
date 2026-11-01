@@ -1,0 +1,41 @@
+everything wotking 
+just admin module remaining 
+also syling for all html pages remaining
+also add these feature 
+Additional Features to Enhance System
+
+Dashboard analytics for officers:
+
+Number of assigned complaints
+
+Resolved vs Pending
+
+Complaints by category
+
+Notifications for both sides:
+
+Officer → New complaint assigned
+
+Citizen → Case status updated / report generated
+
+Multiple officers per category:
+
+System can balance load automatically
+
+Admin can reassign if needed
+
+Search / Filter complaints:
+
+By category, status, date
+
+Timeline view:
+
+For each complaint:
+
+Submitted → Assigned → In Progress → Resolved → Report Generated
+
+Secure file storage:
+
+Evidence files linked to complaint only
+
+Officer cannot edit evidence, only view

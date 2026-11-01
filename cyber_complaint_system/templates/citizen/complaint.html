@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Complaint | CyberSecure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fc;
+}
+
+/* NAVBAR */
+.navbar{
+    background:#0f172a;
+    color:white;
+    padding:14px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-size:20px;
+    font-weight:700;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav-right span{
+    background:#1e293b;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.nav-right a{
+    color:#cbd5f5;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* HEADER */
+.page-header{
+    background:linear-gradient(120deg,#6A11CB,#2575FC);
+    color:white;
+    padding:30px 50px;
+}
+
+.page-header h1{margin:0}
+
+/* MAIN */
+.container{
+    padding:40px 50px;
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:35px;
+}
+
+/* INFO */
+.info-box{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.step{
+    display:flex;
+    align-items:center;
+    margin-bottom:14px;
+    font-weight:500;
+}
+
+.step span{
+    background:#2575FC;
+    color:white;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:10px;
+}
+
+/* RULES */
+.rules{
+    margin-top:25px;
+    background:#fff7ed;
+    padding:18px;
+    border-left:5px solid #f59e0b;
+    border-radius:12px;
+    font-size:13px;
+}
+
+.rules ul{
+    padding-left:18px;
+}
+
+/* FORM */
+.form-box{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+label{
+    font-weight:600;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:13px;
+    margin:10px 0 18px;
+    border-radius:12px;
+    border:1px solid #cbd5e1;
+}
+
+.file-box{
+    border:2px dashed #c7d2fe;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* ACTIONS */
+.actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back-btn{
+    background:#e2e8f0;
+    color:#334155;
+    padding:10px 22px;
+    border-radius:25px;
+    border:none;
+    cursor:pointer;
+}
+
+.submit-btn{
+    background:linear-gradient(90deg,#6A11CB,#2575FC);
+    color:white;
+    padding:12px 35px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+    background:#020617;
+    color:#94a3b8;
+    padding:30px 50px;
+    margin-top:60px;
+    font-size:13px;
+}
+
+.footer .row{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.footer a{
+    color:#94a3b8;
+    text-decoration:none;
+    margin-right:15px;
+}
+
+@media(max-width:900px){
+    .container{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="brand">🛡 CyberSecure Portal</div>
+    <div class="nav-right">
+        <span>Citizen</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<div class="page-header">
+    <h1>Register Cyber Crime Complaint</h1>
+    <p>National Cyber Crime Reporting System</p>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- INFO -->
+    <div class="info-box">
+        <h3>Complaint Submission Steps</h3>
+
+        <div class="step"><span>1</span> Fill complaint details</div>
+        <div class="step"><span>2</span> Choose crime category</div>
+        <div class="step"><span>3</span> Upload valid evidence</div>
+        <div class="step"><span>4</span> Submit for investigation</div>
+
+        <div class="rules">
+            <strong>Strict Rules & Legal Notice</strong>
+            <ul>
+                <li>False complaints are punishable under IT Act, 2000.</li>
+                <li>Uploaded evidence must be original and untampered.</li>
+                <li>This complaint is treated equivalent to a preliminary FIR.</li>
+                <li>Multiple false reports may lead to account suspension.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-box">
+        <form method="POST" enctype="multipart/form-data">
+
+            <label>Complaint Title</label>
+            <input type="text" name="title" required>
+
+            <label>Category</label>
+            <select name="category" required>
+                <option value="">-- Select Category --</option>
+                <option>Online Fraud</option>
+                <option>Cyber Bullying</option>
+                <option>Hacking</option>
+                <option>Identity Theft</option>
+                <option>Social Media Crime</option>
+                <option>Other</option>
+            </select>
+
+            <label>Description</label>
+            <textarea name="description" rows="5" required></textarea>
+
+            <label>Evidence Upload</label>
+            <div class="file-box">
+                <input type="file" name="evidence" accept=".jpg,.jpeg,.png,.pdf" required>
+                <p>Max size: 5MB | JPG, PNG, PDF</p>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="back-btn" onclick="history.back()">⬅ Back</button>
+                <button type="submit" class="submit-btn">Submit Securely</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="row">
+        <div>
+            © 2026 CyberSecure | Government of India (Demo Project)
+        </div>
+        <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Help</a>
+            <a href="#">Cyber Helpline: 1930</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

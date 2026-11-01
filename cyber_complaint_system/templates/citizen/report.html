@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Investigation Report | CyberSecure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f1f5f9;
+        }
+
+        .report-box{
+            max-width:900px;
+            margin:auto;
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 15px 40px rgba(0,0,0,.15);
+        }
+
+        .header{
+            text-align:center;
+            border-bottom:2px solid #e2e8f0;
+            padding-bottom:20px;
+            margin-bottom:30px;
+        }
+
+        .header h2{
+            font-weight:700;
+            margin-bottom:5px;
+        }
+
+        .badge-confidential{
+            background:#dc2626;
+            color:white;
+            padding:6px 14px;
+            border-radius:20px;
+            font-size:12px;
+            display:inline-block;
+            margin-top:10px;
+        }
+
+        .meta p{
+            margin:4px 0;
+            font-size:14px;
+        }
+
+        .section-title{
+            margin-top:30px;
+            font-weight:600;
+            color:#1e40af;
+        }
+
+        .report-content{
+            background:#f8fafc;
+            padding:20px;
+            border-radius:10px;
+            white-space:pre-wrap;
+            font-family:monospace;
+            font-size:14px;
+        }
+
+        .notice{
+            background:#ecfeff;
+            border-left:5px solid #06b6d4;
+            padding:15px;
+            border-radius:10px;
+            margin-top:30px;
+            font-size:14px;
+        }
+
+        .precaution{
+            background:#fff7ed;
+            border-left:5px solid #f59e0b;
+            padding:15px;
+            border-radius:10px;
+            margin-top:20px;
+            font-size:14px;
+        }
+
+        .footer{
+            margin-top:40px;
+            border-top:1px solid #e2e8f0;
+            padding-top:15px;
+            font-size:12px;
+            color:#64748b;
+        }
+
+        .actions{
+            margin-top:30px;
+            text-align:right;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container my-5">
+    <div class="report-box">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h2>CyberSecure Complaint Management System</h2>
+            <p class="text-muted">Official Cyber Crime Investigation Report</p>
+            <span class="badge-confidential">CONFIDENTIAL</span>
+        </div>
+
+        <!-- META INFO -->
+        <div class="meta">
+            <p><b>Report ID:</b> {{ report_id }}</p>
+            <p><b>Status:</b> Case Closed – Final Report Generated</p>
+            <p><b>Generated On:</b> {{ generated_date }}</p>
+        </div>
+
+        <!-- REPORT -->
+        <h5 class="section-title">Investigation Summary</h5>
+        <div class="report-content">
+{{ report }}
+        </div>
+
+        <!-- CITIZEN SATISFACTION -->
+        <div class="notice">
+            <b>Final Outcome Notice</b><br>
+            This report represents the <b>final outcome</b> of your cyber crime complaint.
+            The investigation has been completed by the authorized cyber cell officer,
+            and necessary actions have been taken as per applicable laws.
+        </div>
+
+        <!-- PRECAUTIONS -->
+        <div class="precaution">
+            <b>Important Precautions for Citizen</b>
+            <ul>
+                <li>Do not share OTPs, passwords, or sensitive information with anyone.</li>
+                <li>Preserve this report for future legal or reference purposes.</li>
+                <li>If the issue repeats, file a fresh complaint immediately.</li>
+                <li>Enable two-factor authentication on all digital platforms.</li>
+            </ul>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+            <button onclick="window.print()" class="btn btn-outline-primary">
+                ⬇ Download / Print Report
+            </button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            This document is system-generated under CyberSecure Portal.<br>
+            Unauthorized sharing, duplication, or modification of this report is prohibited.<br>
+            For queries, contact Cyber Crime Helpline: <b>1930</b>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

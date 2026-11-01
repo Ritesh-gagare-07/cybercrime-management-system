@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Complaint Management System</title>
+
+    <script defer src="/static/js/main.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #F8F9FD;
+    color: #1F2933;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #6A11CB, #2575FC);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1F2933;
+    font-weight: 500;
+}
+
+.btn {
+    padding: 8px 18px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #6A11CB, #2575FC);
+    color: white !important;
+}
+
+.btn-outline {
+    padding: 7px 16px;
+    border-radius: 25px;
+    border: 2px solid #2575FC;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 90px 80px;
+}
+
+.hero-text h1 {
+    font-size: 52px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    margin: 18px 0;
+    font-size: 18px;
+    color: #475569;
+}
+
+.btn-lg {
+    padding: 14px 36px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #6A11CB, #2575FC);
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.hero-image img {
+    width: 380px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% { transform: translateY(-18px); }
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 80px;
+}
+
+.card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    width: 260px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
+/* PROCESS */
+.process {
+    padding: 70px;
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.step {
+    padding: 22px;
+    width: 220px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #6A11CB, #2575FC);
+    color: white;
+    animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* TRUST */
+.trust {
+    padding: 70px;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    background: #0F172A;
+    color: white;
+    padding: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content a {
+    color: #00E5FF;
+    text-decoration: none;
+}
+
+.copy {
+    text-align: center;
+    margin-top: 25px;
+    color: #CBD5F5;
+}
+
+/* NATIONAL HEADING */
+.national-heading {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(to right, #e0f2ff, #f8fbff);
+}
+
+.national-heading h1 {
+    font-size: 36px;
+    color: #0a3d62;
+    font-weight: 700;
+}
+
+.national-heading h2 {
+    font-size: 28px;
+    color: #1e6091;
+    margin-top: 5px;
+}
+
+.national-heading p {
+    margin-top: 10px;
+    color: #555;
+}
+
+/* CRIME CATEGORIES */
+.crime-categories {
+    padding: 70px 10%;
+    text-align: center;
+    background: #ffffff;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.category-card {
+    background: #f0f9ff;
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 18px;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.category-card h3 {
+    margin-top: 10px;
+    color: #0a3d62;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    background: #dff1ff;
+}
+
+/* SAFETY TIPS */
+.safety-tips {
+    background: #eaf6ff;
+    padding: 60px 10%;
+}
+
+.safety-tips h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0a3d62;
+}
+
+.safety-tips ul {
+    max-width: 700px;
+    margin: auto;
+    list-style: none;
+}
+
+.safety-tips li {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-left: 5px solid #1e90ff;
+    border-radius: 8px;
+}
+
+   </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">CyberSecure</div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="/login" class="btn-outline">Login</a></li>
+        <li><a href="/register" class="btn">Register</a></li>
+    </ul>
+</nav>
+<section class="national-heading">
+    <h1>National Cyber Crime Reporting Portal</h1>
+    <h2>राष्ट्रीय साइबर अपराध रिपोर्टिंग पोर्टल</h2>
+    <p>Government-supported platform for safe and transparent cyber crime reporting</p>
+</section>
+
+
+<!-- HERO SECTION -->
+<header class="hero">
+    <div class="hero-text">
+       <h1>Report Cyber Crime Securely</h1>
+<p>Trusted Platform for Citizens • Officers • Authorities</p>
+
+        <a href="/register" class="btn-lg">Register Complaint</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+    </div>
+</header>
+
+<!-- INFO CARDS -->
+<section class="cards">
+    <div class="card">
+        <h3>🔐 Secure</h3>
+        <p>Your data is encrypted and protected</p>
+    </div>
+    <div class="card">
+        <h3>⚡ Fast</h3>
+        <p>Quick complaint registration & tracking</p>
+    </div>
+    <div class="card">
+        <h3>🤝 Transparent</h3>
+        <p>Track every step of investigation</p>
+    </div>
+</section>
+<section class="crime-categories">
+    <h2>Common Cyber Crime Categories</h2>
+
+    <div class="category-grid">
+        <div class="category-card">
+            💳
+            <h3>Online Fraud</h3>
+            <p>UPI frauds, fake websites, payment scams</p>
+        </div>
+
+        <div class="category-card">
+            📱
+            <h3>Social Media Crime</h3>
+            <p>Fake profiles, impersonation, cyber bullying</p>
+        </div>
+
+        <div class="category-card">
+            📧
+            <h3>Phishing</h3>
+            <p>Fraud emails, SMS scams, fake links</p>
+        </div>
+
+        <div class="category-card">
+            🖥️
+            <h3>Hacking</h3>
+            <p>Unauthorized access, data theft</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- HOW SYSTEM WORKS -->
+<section class="process" id="about">
+    <h2>How It Works</h2>
+
+    <div class="steps">
+        <div class="step">📝 Register Complaint</div>
+        <div class="step">📂 Upload Evidence</div>
+        <div class="step">👮 Officer Investigation</div>
+        <div class="step">📄 Final Report</div>
+    </div>
+</section>
+<section class="safety-tips">
+    <h2>Important Cyber Safety Tips</h2>
+
+    <ul>
+        <li>Never share OTP, PIN, or passwords with anyone</li>
+        <li>Verify website URLs before making payments</li>
+        <li>Do not click unknown links from SMS or email</li>
+        <li>Report cyber crimes immediately for quick action</li>
+    </ul>
+</section>
+
+
+<!-- TRUST SECTION -->
+<section class="trust">
+    <h2>Built for Safety & Trust</h2>
+    <p>We ensure transparency, data protection, and reliable communication between citizens and authorities.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <h3>CyberSecure</h3>
+            <p>"Your digital safety is our responsibility."</p>
+        </div>
+
+        <div>
+            <h4>Useful Links</h4>
+            <a href="/login">Login</a><br>
+            <a href="/register">Register</a><br>
+            <a href="#">Help</a>
+        </div>
+    </div>
+
+    <p class="copy">© 2026 Cyber Complaint Management System</p>
+</footer>
+<script>
+    document.addEventListener("scroll", () => {
+    document.querySelectorAll(".card").forEach(card => {
+        card.style.opacity = "1";
+    });
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Complaints | CyberSecure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#f1f5f9;
+        }
+
+        /* NAVBAR */
+        .navbar{
+            background:linear-gradient(90deg,#6A11CB,#2575FC);
+            padding:15px 40px;
+        }
+        .navbar-brand, .nav-link{
+            color:white !important;
+            font-weight:500;
+        }
+
+        /* HERO */
+        .hero{
+            padding:50px 20px;
+            text-align:center;
+        }
+        .hero h1{
+            font-weight:700;
+            color:#1e3a8a;
+        }
+        .hero p{
+            color:#475569;
+            max-width:700px;
+            margin:auto;
+        }
+
+        /* QUOTE */
+        .quote{
+            font-style:italic;
+            color:#334155;
+            margin-top:15px;
+        }
+
+        /* CARDS */
+        .stats{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:20px;
+            margin:40px 0;
+        }
+
+        .stat-card{
+            background:white;
+            padding:25px;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 12px 30px rgba(0,0,0,.1);
+            transition:.3s;
+        }
+
+        .stat-card:hover{
+            transform:translateY(-8px);
+        }
+
+        .stat-card h3{
+            color:#2575FC;
+            font-weight:600;
+        }
+
+        /* TABLE */
+        .table{
+            animation:fadeUp .8s ease;
+        }
+
+        @keyframes fadeUp{
+            from{opacity:0; transform:translateY(20px)}
+            to{opacity:1; transform:translateY(0)}
+        }
+
+        /* FOOTER */
+        footer{
+            background:#0f172a;
+            color:#cbd5f5;
+            padding:30px;
+            margin-top:60px;
+        }
+
+        footer a{
+            color:#93c5fd;
+            text-decoration:none;
+            display:block;
+            margin:5px 0;
+        }
+        
+    /* TABLE RE-DESIGN */
+    .complaint-table {
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+
+    .complaint-table thead th {
+        background: transparent;
+        color: #334155;
+        font-weight: 600;
+        border: none;
+        padding-bottom: 10px;
+    }
+
+    .complaint-table tbody tr {
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border-radius: 14px;
+        transition: 0.3s;
+    }
+
+    .complaint-table tbody tr:hover {
+        transform: scale(1.01);
+        box-shadow: 0 15px 35px rgba(37,117,252,0.25);
+    }
+
+    .complaint-table td {
+        border: none;
+        padding: 18px;
+        vertical-align: middle;
+    }
+
+    /* STATUS BADGES */
+    .status-open {
+        background: linear-gradient(90deg,#fbbf24,#f59e0b);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
+
+    .status-investigation {
+        background: linear-gradient(90deg,#38bdf8,#2563eb);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
+
+    .status-resolved {
+        background: linear-gradient(90deg,#22c55e,#16a34a);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
+
+    /* ACTION BUTTONS */
+    .action-btn {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 18px;
+        font-size: 13px;
+        text-decoration: none;
+        margin: 4px 0;
+    }
+
+    .btn-msg {
+        background: #e0f2fe;
+        color: #0369a1;
+    }
+
+    .btn-report {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .btn-msg:hover, .btn-report:hover {
+        opacity: 0.85;
+    }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/citizen/dashboard">CyberSecure</a>
+    <div class="ms-auto">
+        <a class="nav-link d-inline" href="/citizen/complaint">New Complaint</a>
+        <a class="nav-link d-inline" href="/citizen/status">My Complaints</a>
+        <a class="nav-link d-inline" href="/logout">Logout</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>My Cyber Complaints</h1>
+    <p>
+        Track, monitor, and review the progress of your cyber crime complaints
+        submitted through the CyberSecure Complaint Management System.
+    </p>
+    <div class="quote">
+        “Justice delayed is justice denied — transparency ensures trust.”
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="container">
+    <div class="stats">
+        <div class="stat-card">
+            <h3>{{ complaints|length }}</h3>
+            <p>Total Complaints</p>
+        </div>
+        <div class="stat-card">
+            <h3>Secure</h3>
+            <p>Encrypted Evidence</p>
+        </div>
+        <div class="stat-card">
+            <h3>Verified</h3>
+            <p>Officer Review</p>
+        </div>
+    </div>
+
+    <!-- TABLE -->
+    {% if complaints %}
+    
+<div class="table-responsive">
+<table class="table complaint-table">
+    <thead>
+        <tr>
+            <th>Complaint ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+            <th>Date</th>
+            <th>Evidence</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for c in complaints %}
+        <tr>
+            <td><b>#{{ c[0] }}</b></td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+
+            <td>
+                {% if c[3] == 'Open' %}
+                    <span class="status-open">Open</span>
+                {% elif c[3] == 'In Progress' %}
+                    <span class="status-investigation">Under Investigation</span>
+                {% elif c[3] == 'Resolved' %}
+                    <span class="status-resolved">Resolved</span>
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="/messages/{{ c[0] }}" class="action-btn btn-msg">
+                    💬 Messages
+                </a><br>
+
+                {% if c[3] == 'Resolved' %}
+                <a href="/citizen/report/{{ c[0] }}" class="action-btn btn-report">
+                    📄 View Report
+                </a>
+                {% endif %}
+            </td>
+
+            <td>{{ c[4] }}</td>
+
+            <td>
+                {% if c[5] %}
+                    <a href="/static/uploads/{{ c[5] }}" target="_blank">
+                        🔍 View
+                    </a>
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            No complaints submitted yet.
+        </div>
+    {% endif %}
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>CyberSecure Portal</h5>
+                <p>
+                    A centralized system ensuring transparency,
+                    accountability, and digital safety for citizens.
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <h5>Useful Resources</h5>
+                <a href="https://cybercrime.gov.in" target="_blank">National Cyber Crime Portal</a>
+                <a href="https://www.cert-in.org.in" target="_blank">CERT-In</a>
+                <a href="tel:1930">Cyber Helpline: 1930</a>
+            </div>
+        </div>
+
+        <hr>
+        <p class="text-center">
+            © 2026 CyberSecure Complaint Management System
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
